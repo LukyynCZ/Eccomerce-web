@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Product = ({ productId, productBrand, productName, productImage, productPrice }) => {
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
 
   const notify = () =>
     toast.success('Item added to cart!', {

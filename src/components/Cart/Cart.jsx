@@ -1,5 +1,23 @@
+import { useContext } from 'react';
+import { ShopContext } from '../../context/shopContext';
+import { PRODUCTS } from '../../products';
+import CartProduct from './CartProduct';
+
 const Cart = () => {
-  return <>Cart</>;
+  const { cartItems } = useContext(ShopContext);
+
+  return (
+    <>
+      <h1 className='text-4xl text-center my-14 font-semibold'>Cart</h1>
+      <div className='max-w-7xl w-11/12 md:w-4/5 mx-auto'>
+        {PRODUCTS.map((product) => {
+          if (cartItems[product.id] > 0) {
+            return <CartProduct product={product} />;
+          }
+        })}
+      </div>
+    </>
+  );
 };
 
 export default Cart;
