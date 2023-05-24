@@ -21,11 +21,21 @@ export const ShopContextProvider = (props) => {
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    setNumberOfItems(numberOfItems - 1);
+    setNumberOfItems(numberOfItems - cartItems[itemId]);
+    setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] = 0) }));
   };
 
-  const contextValue = { cartItems, addToCart, removeFromCart, numberOfItems };
+  const contextValue = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    numberOfItems,
+    setNumberOfItems,
+  };
 
-  return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
+  return (
+    <ShopContext.Provider value={contextValue}>
+      {props.children}
+    </ShopContext.Provider>
+  );
 };
