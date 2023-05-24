@@ -9,7 +9,7 @@ const Cart = () => {
 
   useEffect(() => {
     getFinalPrice();
-  }, []);
+  }, [finalPrice, numberOfItems]);
 
   const navigate = useNavigate();
 
