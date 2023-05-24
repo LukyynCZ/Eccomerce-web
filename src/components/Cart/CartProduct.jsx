@@ -3,10 +3,8 @@ import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io';
 import { ShopContext } from '../../context/shopContext';
 
 const CartProduct = (props) => {
-  const { id, productBrand, productName, productImage, productPrice } =
-    props.product;
-  const { cartItems, removeFromCart, setNumberOfItems } =
-    useContext(ShopContext);
+  const { id, productBrand, productName, productImage, productPrice } = props.product;
+  const { cartItems, removeFromCart, setNumberOfItems, getFinalPrice } = useContext(ShopContext);
 
   const [numOfProduct, setNumOfProduct] = useState(cartItems[id]);
 
@@ -31,6 +29,7 @@ const CartProduct = (props) => {
                 cartItems[id] -= 1;
                 setNumberOfItems((prev) => prev - 1);
                 setNumOfProduct(cartItems[id]);
+                getFinalPrice();
               }
             }}
           />
@@ -45,6 +44,7 @@ const CartProduct = (props) => {
               cartItems[id] += 1;
               setNumberOfItems((prev) => prev + 1);
               setNumOfProduct(cartItems[id]);
+              getFinalPrice();
             }}
           />
         </div>
@@ -52,6 +52,7 @@ const CartProduct = (props) => {
           <IoMdClose
             onClick={() => {
               removeFromCart(id);
+              getFinalPrice();
             }}
             size={30}
             className='select-none cursor-pointer bg-red-500 duration-150 hover:bg-red-600 rounded-full p-1'

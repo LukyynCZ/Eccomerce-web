@@ -11,13 +11,14 @@ const Products = () => {
     <div className='mb-20'>
       <h1 className='text-4xl text-center my-14 font-semibold'>Our Products</h1>
       <div className='products'>
-        {PRODUCTS.map((product) => (
+        {PRODUCTS.map((product, key) => (
           <Product
             productId={product.id}
             productBrand={product.productBrand}
             productName={product.productName}
             productImage={product.productImage}
             productPrice={product.productPrice}
+            key={key}
           />
         ))}
       </div>

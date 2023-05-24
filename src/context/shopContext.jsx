@@ -14,15 +14,26 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [numberOfItems, setNumberOfItems] = useState(0);
+  const [finalPrice, setFinalPrice] = useState(0);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     setNumberOfItems(numberOfItems + 1);
+    getFinalPrice();
   };
 
   const removeFromCart = (itemId) => {
     setNumberOfItems(numberOfItems - cartItems[itemId]);
     setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] = 0) }));
+    getFinalPrice();
+  };
+
+  const getFinalPrice = () => {
+    let price = 0;
+    PRODUCTS.forEach((product) => {
+      price += product.productPrice * cartItems[product.id];
+    });
+    setFinalPrice(price);
   };
 
   const contextValue = {
@@ -31,11 +42,9 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     numberOfItems,
     setNumberOfItems,
+    finalPrice,
+    getFinalPrice,
   };
 
-  return (
-    <ShopContext.Provider value={contextValue}>
-      {props.children}
-    </ShopContext.Provider>
-  );
+  return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
 };

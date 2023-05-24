@@ -2,14 +2,8 @@ import { useContext } from 'react';
 import { ShopContext } from '../../context/shopContext';
 import toast, { Toaster } from 'react-hot-toast';
 
-const Product = ({
-  productId,
-  productBrand,
-  productName,
-  productImage,
-  productPrice,
-}) => {
-  const { addToCart } = useContext(ShopContext);
+const Product = ({ productId, productBrand, productName, productImage, productPrice }) => {
+  const { addToCart, getFinalPrice } = useContext(ShopContext);
 
   const notify = () =>
     toast.success(`${productName} added in to cart!`, {
@@ -38,6 +32,7 @@ const Product = ({
           <button
             onClick={() => {
               addToCart(productId);
+              getFinalPrice();
               notify();
             }}
             className='w-[90%] border-[1px] rounded-2xl mt-2 py-1 hover:font-semibold hover:bg-white duration-150 hover:text-black'>

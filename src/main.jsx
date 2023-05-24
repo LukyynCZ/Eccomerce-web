@@ -9,6 +9,7 @@ import Products from './components/Products/Products.jsx';
 import About from './components/About/About.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import { ShopContextProvider } from './context/shopContext.jsx';
+import CheckOut from './components/Checkout/Checkout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: '/products', element: <Products /> },
       { path: '/about', element: <About /> },
       { path: '/cart', element: <Cart /> },
+      { path: '/checkout', element: <CheckOut /> },
     ],
   },
 ]);
