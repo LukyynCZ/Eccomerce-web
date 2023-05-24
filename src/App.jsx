@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div className='max-w-7xl px-2 m-auto h-[calc(100vh-48px)] flex flex-col md:flex-row pt-20 md:pt-0 md:justify-center items-center'>
-        <img src='src/assets/android-device.jpg' className='w-1/2' />
+        <img src='src/assets/android-device.jpg' className='w-1/2 max-h-[500px]' />
         <div className='text-center md:text-left'>
           <h1 className='text-3xl md:w-2/3'>Premium Android Products</h1>
           <p className='md:w-4/5 mb-5'>
