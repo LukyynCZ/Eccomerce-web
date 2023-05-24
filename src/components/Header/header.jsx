@@ -5,6 +5,7 @@ import { BsCart3 } from 'react-icons/bs';
 import './header.css';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../../context/shopContext';
+import androidIcon from '../../assets/android.jpg';
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -14,7 +15,7 @@ const Header = () => {
     <>
       <div className='w-full h-12 flex justify-between items-center border-gray-500 border-b-[1px] z-50'>
         <Link to={'/'} className='flex items-center'>
-          <img src='src/assets/android.jpg' className='w-16 p-2' />
+          <img src={androidIcon} className='w-16 p-2' />
           <h1 className='text-3xl'>Android</h1>
         </Link>
 

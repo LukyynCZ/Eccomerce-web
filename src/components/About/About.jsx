@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <>
-      <div className='max-w-7xl px-2 m-auto pt-20'>
+      <div className='max-w-7xl px-2 m-auto mb-10 pt-20'>
         <div className='flex flex-col md:flex-row md:pt-20 md:justify-center items-center'>
           <img src={samsungZfold4} className='w-1/2 max-h-[500px] object-contain' />
           <div className='text-center md:text-left px-10'>
